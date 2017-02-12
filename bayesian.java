@@ -64,8 +64,36 @@ public class Bayesian
 			return;
 		}
 		
-		// Debug test code, delete when done testing input
-		System.out.print("\n\nP(" + aliasA + ") = " + probA + "\nP(" + aliasB + " | " + aliasA + ") = " + probBgivenA + "\nChoice = " + choice);
+		if (choice != 1 && choice != 2) {
+			System.out.println("Invalid input, exiting");
+			input.close();
+			return;
+		}
+		else if (choice==1)
+		{
+			float probB;
+			System.out.print("\n\nP(" + aliasB + ") = ");
+			try
+			{
+				probB = input.nextFloat();
+			}
+			catch (InputMismatchException e)
+			{
+				System.out.println("Invalid input, exiting");
+				input.close();
+				return;
+			}
+			
+			answer = probBgivenA * probA / probB;
+			
+			System.out.println("P(" + aliasA + " | " + aliasB + ") = " + answer );
+		}
+		else if (choice==2)
+		{
+			// Test code, delete when finished testing choice 1 options
+			System.out.println("Choice was 2");
+		}
+		
 		input.close();
 		return;
 	}
