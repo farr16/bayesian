@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  * Takes input from user about a probability problem and solves it by applying Bayes' Theorem
@@ -23,5 +24,34 @@ public class Bayesian
 		String aliasB = input.next();
 		
 		System.out.println("\nSolving for P(" + aliasA + " | " + aliasB + ")");
+		
+		float probA, probBgivenA;
+		
+		System.out.print("\nInput probability of " + aliasA + "\nP(" + aliasA + "): ");
+		try 
+		{
+			probA = input.nextFloat();
+		} catch (InputMismatchException e)
+		{
+			System.out.println("\nInvalid input, exiting");
+			input.close();
+			return;
+		}
+		
+		System.out.print("\nInput probability of " + aliasB + " given " + aliasA + "\nP(" + aliasB + " | " + aliasA + "): ");
+		try
+		{
+			probBgivenA = input.nextFloat();
+		} catch (InputMismatchException e)
+		{
+			System.out.println("Invalid input, exiting");
+			input.close();
+			return;
+		}
+		
+		// Debug test code, delete when done testing input
+		System.out.print("\n\nP(" + aliasA + ") = " + probA + "\nP(" + aliasB + " | " + aliasA + ") = " + probBgivenA);
+		input.close();
+		return;
 	}
 }
