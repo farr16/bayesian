@@ -49,8 +49,23 @@ public class Bayesian
 			return;
 		}
 		
+		System.out.println("Choose next available piece of info:");
+		System.out.print("\n\n1) P(" + aliasB + ")\nOR\n2) P(" + aliasB + " | NOT " + aliasA + ")\n");
+		System.out.print("\nInput 1 or 2: ");
+		
+		int choice;
+		try
+		{
+			choice = input.nextInt();
+		} catch (InputMismatchException e)
+		{
+			System.out.println("Invalid input, exiting");
+			input.close();
+			return;
+		}
+		
 		// Debug test code, delete when done testing input
-		System.out.print("\n\nP(" + aliasA + ") = " + probA + "\nP(" + aliasB + " | " + aliasA + ") = " + probBgivenA);
+		System.out.print("\n\nP(" + aliasA + ") = " + probA + "\nP(" + aliasB + " | " + aliasA + ") = " + probBgivenA + "\nChoice = " + choice);
 		input.close();
 		return;
 	}
