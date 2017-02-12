@@ -64,6 +64,8 @@ public class Bayesian
 			return;
 		}
 		
+		float answer;
+		
 		if (choice != 1 && choice != 2) {
 			System.out.println("Invalid input, exiting");
 			input.close();
@@ -90,8 +92,22 @@ public class Bayesian
 		}
 		else if (choice==2)
 		{
-			// Test code, delete when finished testing choice 1 options
-			System.out.println("Choice was 2");
+			float probBgivenNotA;
+			System.out.print("\n\nP(" + aliasB + " | NOT " + aliasA + ") = ");
+			try
+			{
+				probBgivenNotA = input.nextFloat();
+			}
+			catch (InputMismatchException e)
+			{
+				System.out.println("Invalid input, exiting");
+				input.close();
+				return;
+			}
+			
+			answer = probBgivenA * probA / (probBgivenA * probA + probBgivenNotA * (1-probA));
+			
+			System.out.println("P(" + aliasA + " | " + aliasB + ") = " + answer );
 		}
 		
 		input.close();
